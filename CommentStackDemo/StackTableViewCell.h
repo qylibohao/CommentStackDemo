@@ -14,6 +14,6 @@
 
 
 + (CGFloat)heightForCellWith:(NSArray*)array;
-+ (CGFloat)widthForStackAtIndex:(NSInteger)index TotalCount:(NSInteger)total;
+//+ (CGFloat)widthForStackAtIndex:(NSInteger)index TotalCount:(NSInteger)total;
 
 @end

@@ -12,37 +12,39 @@
 #import "UIColor+RandomColor.h"
 #import "UIView+Utilities.h"
 #import "MMPlaceHolder.h"
+#import "StackMacros.h"
+#import "UITableViewCell+StackComment.h"
 
-#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-
-#define STACK_TOP_MARGIN 60
-#define STACK_BUTTOM_MARGIN 10
-
-#define STACK_LEFT_MARGIN 40
-#define STACK_RIGHT_MARGIN 10
-
-#define STACK_SPACE 5
-
-#define LABEL_MARGIN 10
-
-#define LABEL_HEIGHT 14
-
-#define LABEL_TOP_PADDING 10
-#define LABEL_BOTTOM_PADDING 10
-#define LABEL_LEFT_PADDING 7
-#define LABEL_RIGHT_PADDING 7
-
-#define CONTENT_STRING_TOP_PADDING 53
-#define CONTENT_STRING_BUTTOM_PADDING 10
-
-
-
-#define LINE_SPACE 3
-#define LINE_WIDTH 1
-
-
-#define TOTAL_LEVEL 4
+//#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+//#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+//
+//#define STACK_TOP_MARGIN 60
+//#define STACK_BUTTOM_MARGIN 10
+//
+//#define STACK_LEFT_MARGIN 40
+//#define STACK_RIGHT_MARGIN 10
+//
+//#define STACK_SPACE 5
+//
+//#define LABEL_MARGIN 10
+//
+//#define LABEL_HEIGHT 14
+//
+//#define LABEL_TOP_PADDING 10
+//#define LABEL_BOTTOM_PADDING 10
+//#define LABEL_LEFT_PADDING 7
+//#define LABEL_RIGHT_PADDING 7
+//
+//#define CONTENT_STRING_TOP_PADDING 53
+//#define CONTENT_STRING_BUTTOM_PADDING 10
+//
+//
+//
+//#define LINE_SPACE 3
+//#define LINE_WIDTH 1
+//
+//
+//#define TOTAL_LEVEL 4
 
 
 @interface StackTableViewCell()
@@ -78,7 +80,6 @@
         [obj performSelector:@selector(removeFromSuperview)];
     }];
     
-    
     UIView* contentView = nil;
     
     if (array.count == 1) {
@@ -89,7 +90,6 @@
         [self createNormalContentViewWithAvatar:@"" Title:@"dkfkdj" Des:@"北京网友" Content:array.lastObject];
         
         contentView = [[UIView alloc]initWithFrame:CGRectMake(STACK_LEFT_MARGIN, STACK_TOP_MARGIN, self.contentView.frame.size.width - STACK_LEFT_MARGIN - STACK_RIGHT_MARGIN, self.contentView.frame.size.height  - STACK_TOP_MARGIN)];
-        //contentView.backgroundColor = [UIColor blueColor];
         [self.contentView addSubview:contentView];
         
         NSArray* subArray = [array subarrayWithRange:NSMakeRange(0, array.count - 1)];
@@ -97,14 +97,14 @@
         
         [subArray enumerateObjectsUsingBlock:^(NSString*  _Nonnull contentStr, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            NSInteger level = [[self class]levelForIndex:idx TotalCount:count];
-            NSInteger offset = [[self class]offsetForStackAtIndex:idx TotalCount:count];
+            NSInteger level = [[self class ]levelForIndex:idx TotalCount:count];
+            NSInteger offset = [[self class ]offsetForStackAtIndex:idx TotalCount:count];
             CGFloat x  = offset;
             CGFloat y = offset;
             
             CGFloat width = [[self class] widthForStackAtIndex:idx TotalCount:count];
             //NSLog(@"width : %f -- Level : %d",width,level);
-            CGFloat height = [[self class]contentViewHeightWithString:contentStr StackWidth:width TotalCount:count];
+            CGFloat height = [[self class] contentViewHeightWithString:contentStr StackWidth:width TotalCount:count];
             
             UIView* borderView = [[UIView alloc]initWithFrame:CGRectMake(x, y, width, height)];
             borderView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -112,20 +112,14 @@
             borderView.userInteractionEnabled = NO;
             
             UIView* contentLabelView = [self createStackContentViewWithFrame:CGRectMake(x, y, width, height) Title:@"火星网友" Content:contentStr];
-            //contentLabelView.backgroundColor = [UIColor grayColor];
-            //contentLabelView.layer.borderColor = [UIColor redColor].CGColor;
-            //contentLabelView.layer.borderWidth = 1;
             
             if (contentView.subviews.count >= 2) {
                 UIView* lastView = contentView.subviews.firstObject;
-                
                 [contentLabelView setViewTop:lastView.bottom];
                 
                 if (level != 0) {
-                    //[borderView setViewHeight:lastView.height + contentLabelView.height + LINE_SPACE];
                     [borderView setViewHeight:lastView.height + contentLabelView.height + LINE_SPACE - LINE_WIDTH];
                 }else {
-                    //[borderView setViewHeight:lastView.height + contentLabelView.height - 1];
                     [borderView setViewHeight:lastView.height + contentLabelView.height];
                 }
                 
@@ -142,8 +136,6 @@
             [contentView insertSubview:borderView atIndex:0];
             
         }];
-        
-        
     }
     
     CGFloat fixWidth = [[self class]widthForStackAtIndex:array.count - 1 TotalCount:array.count];
@@ -157,9 +149,6 @@
         [contentLabel setViewTop:STACK_TOP_MARGIN];
         [self.contentView addSubview:contentLabel];
     }
-    
-    
-    
 }
 
 - (UILabel *)createContentLabelFixWidth:(CGFloat)fixWidth Content:(NSString*)contentStr {
@@ -190,18 +179,6 @@
     desLabel.textColor = _desStrColor;
     desLabel.text = desStr;
     [self.contentView addSubview:desLabel];
-    
-//    CGFloat width = [[self class] widthForStackAtIndex:0 TotalCount:1];
-    
-//    UILabel* contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(STACK_LEFT_MARGIN, STACK_TOP_MARGIN, width ,50)];
-//    contentLabel.font = [UIFont systemFontOfSize:14];
-//    contentLabel.textColor = _contentColor;
-//    contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    contentLabel.numberOfLines = 0;
-//    contentLabel.text = contentStr;
-//    contentLabel.backgroundColor = [UIColor redColor];
-//    [contentLabel resizablesWithDefaultMaxWidth:width];
-//    [self.contentView addSubview:contentLabel];
     
 }
 
@@ -305,54 +282,6 @@
     CGSize size = [contentStr resizablesWithFont:[UIFont systemFontOfSize:12] defaultMaxWidth:fixWidth];
     height += size.height;
     return height;
-}
-
-//根据缩进等级计算stack宽度
-+ (CGFloat)widthForStackAtIndex:(NSInteger)index TotalCount:(NSInteger)total{
-    if (index >= total) return 0;
-    CGFloat width = 0;
-    NSInteger level = 0;
-    
-    if(total <= 5) {
-        level = index;
-        
-        CGFloat originLevelWidth = SCREEN_WIDTH - STACK_LEFT_MARGIN - STACK_RIGHT_MARGIN;
-        width = originLevelWidth - (total - index - 1)*LINE_SPACE*2;
-
-    }else {
-       level = [self levelForIndex:index TotalCount:total];
-        
-        CGFloat originLevelWidth = SCREEN_WIDTH - STACK_LEFT_MARGIN - STACK_RIGHT_MARGIN;
-        
-        width = originLevelWidth - (TOTAL_LEVEL - level)*LINE_SPACE*2;
-        
-    }
-    
-    return width;
-}
-
-+ (CGFloat)offsetForStackAtIndex:(NSInteger)index TotalCount:(NSInteger)total {
-    CGFloat offset = 0.0;
-    if(total <= 5) {
-        offset = (total - index - 1) * LINE_SPACE;
-    }else {
-        NSInteger level = [[self class]levelForIndex:index TotalCount:total];
-        offset = (TOTAL_LEVEL - level)* LINE_SPACE;
-    }
-    return offset;
-}
-
-//计算缩进等级 0到4 越小越缩进
-+ (NSInteger)levelForIndex:(NSInteger)index TotalCount:(NSInteger)total {
-    
-    NSInteger level = 0;
-    if (index < total && total > 5) {
-        level = total - index < 5 ? 5 - (total - index): 0;
-        
-    }else {
-        level = index;
-    }
-    return level;
 }
 
 @end

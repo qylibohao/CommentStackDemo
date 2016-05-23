@@ -22,6 +22,7 @@
 		CE72A9451CA938BA00DD71AF /* UILabel+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE72A9441CA938BA00DD71AF /* UILabel+Additions.m */; };
 		CE72A9481CA95D8900DD71AF /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE72A9471CA95D8900DD71AF /* UIColor+RandomColor.m */; };
 		CEF4B1E21CF2DCB000121E46 /* UITableViewCell+StackComment.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4B1E11CF2DCB000121E46 /* UITableViewCell+StackComment.m */; };
+		CEF4B1E61CF2E32200121E46 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4B1E51CF2E32200121E46 /* CommentModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,9 @@
 		CE72A9471CA95D8900DD71AF /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RandomColor.m"; sourceTree = "<group>"; };
 		CEF4B1E01CF2DCB000121E46 /* UITableViewCell+StackComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+StackComment.h"; sourceTree = "<group>"; };
 		CEF4B1E11CF2DCB000121E46 /* UITableViewCell+StackComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+StackComment.m"; sourceTree = "<group>"; };
+		CEF4B1E31CF2DED400121E46 /* StackMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackMacros.h; sourceTree = "<group>"; };
+		CEF4B1E41CF2E32200121E46 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		CEF4B1E51CF2E32200121E46 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +143,11 @@
 				CE72A8AB1CA8D51E00DD71AF /* ViewController.m */,
 				CE72A8D71CA8D76C00DD71AF /* StackTableViewCell.h */,
 				CE72A8D81CA8D76C00DD71AF /* StackTableViewCell.m */,
+				CEF4B1E31CF2DED400121E46 /* StackMacros.h */,
 				CEF4B1E01CF2DCB000121E46 /* UITableViewCell+StackComment.h */,
 				CEF4B1E11CF2DCB000121E46 /* UITableViewCell+StackComment.m */,
+				CEF4B1E41CF2E32200121E46 /* CommentModel.h */,
+				CEF4B1E51CF2E32200121E46 /* CommentModel.m */,
 				CE72A8AD1CA8D51E00DD71AF /* Main.storyboard */,
 				CE72A8B01CA8D51E00DD71AF /* Assets.xcassets */,
 				CE72A8B21CA8D51E00DD71AF /* LaunchScreen.storyboard */,
@@ -353,6 +360,7 @@
 				CE72A8AC1CA8D51E00DD71AF /* ViewController.m in Sources */,
 				CE72A9481CA95D8900DD71AF /* UIColor+RandomColor.m in Sources */,
 				CE6C72E01CAA699100B08395 /* UIView+Utilities.m in Sources */,
+				CEF4B1E61CF2E32200121E46 /* CommentModel.m in Sources */,
 				CE72A8A91CA8D51E00DD71AF /* AppDelegate.m in Sources */,
 				CE72A8A61CA8D51E00DD71AF /* main.m in Sources */,
 			);

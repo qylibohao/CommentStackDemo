@@ -7,7 +7,7 @@
 //
 
 #import "UITableViewCell+StackComment.h"
-
+#import "StackMacros.h"
 
 
 @implementation UITableViewCell (StackComment)
